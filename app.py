@@ -35,7 +35,7 @@ def basic():
 
 
         if prediction_value == 0:
-            return render_template('index.html', POC_not_detected=POC_not_detected
+            return render_template('index.html', POC_not_detected=POC_not_detected)
         elif prediction_value == 1:
             return render_template('index.html', POC_detected=POC_detected)
 
