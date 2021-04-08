@@ -6,25 +6,39 @@ app = Flask(__name__)
 
 
 def basic():
+
     if request.method == 'POST':
-        sepal_length = request.form['sepallength']
-        sepal_width = request.form['petalwidth']
-        petal_length = request.form['petallength']
-        petal_width = request.form['petalwidth']
-        y_pred = [[sepal_length, sepal_width, petal_length, petal_width]]
+
+
+        Diagnose = request.form['Diagnose']
+        Overweight = request.form['Overweight']
+        Weightgain = request.form['Weightgain]
+        Periods = request.form['Periods']
+        Conceiving = request.form['Conceiving']
+        AcneOrskinTag= request.form['AcneOrskinTag']
+        HairThinning= request.form['HairThinning']
+        DarkPatch = request.form['DarkPatch']
+        Tiredness = request.form['Tiredness']
+        MoodSwings = request.form['MoodSwings']
+        CannedFood = request.form['TCannedFood']
+        City = request.form['City']
+
+        y_pred = [[Diagnose, Overweight, Weightgain, Periods,Conceiving,AcneOrskinTag,HairThinning,DarkPatch,Tiredness,MoodSwings,CannedFood,TCannedFood]
+
         trained_model = iris_model.training_model()
+
         prediction_value = trained_model.predict(y_pred)
-        setosa = 'The flower is classified as Setosa'
-        versicolor = 'The flower is classified as Versicolor'
-        virginica = 'The flower is classified as Virginica'
+
+        POC_not_detected = 'You have no Polycystic ovary syndrome'
+        POC_detected='You have no Polycystic ovary syndrome ,Please consult with an specialist ' 
+      
 
 
         if prediction_value == 0:
-            return render_template('index.html', setosa=setosa)
+            return render_template('index.html', POC_not_detected=POC_not_detected
         elif prediction_value == 1:
-            return render_template('index.html', versicolor=versicolor)
-        else:
-            return render_template('index.html', virginica=virginica) 
+            return render_template('index.html', POC_detected=POC_detected)
+
     return render_template('index.html')
 
 if __name__ == '__main__':
