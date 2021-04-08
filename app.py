@@ -1,32 +1,31 @@
-from flask import Flask,render_template,request
-# used request to catch the values of data in html
-# import pcos_model
+from flask import Flask, render_template, request
+import pcos_model.py
+app = Flask(__name__)
+
+@app.route('/', methods=['GET', 'POST'])
 
 
-app=Flask(__name__)
-
-
-@app.route('/',methods=['GET','POST'])
 def basic():
-    if request.method=='POST':
+    if request.method == 'POST':
+        sepal_length = request.form['sepallength']
+        sepal_width = request.form['petalwidth']
+        petal_length = request.form['petallength']
+        petal_width = request.form['petalwidth']
+        y_pred = [[sepal_length, sepal_width, petal_length, petal_width]]
+        trained_model = iris_model.training_model()
+        prediction_value = trained_model.predict(y_pred)
+        setosa = 'The flower is classified as Setosa'
+        versicolor = 'The flower is classified as Versicolor'
+        virginica = 'The flower is classified as Virginica'
 
-        passenger_class=request.form['pclass']
-        age=request.form['age']
-        gender=request.form['gender']
-        if gender=="male":
-            male=1
-            female=0
+
+        if prediction_value == 0:
+            return render_template('index.html', setosa=setosa)
+        elif prediction_value == 1:
+            return render_template('index.html', versicolor=versicolor)
         else:
-            female=1
-            male=0
-        print(passanger_class,age,gender)    
-    #     x_pred=[[passenger_class]]    
-    #     imported_model=pcos_model.trained_model()
-    #     y_pred=imported_model.predict(x_pred)
-    #     print(y_pred)
-        
-
+            return render_template('index.html', virginica=virginica) 
     return render_template('index.html')
 
-if __name__=='__main__':
+if __name__ == '__main__':
     app.run(debug=True)
