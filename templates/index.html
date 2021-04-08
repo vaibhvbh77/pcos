@@ -17,11 +17,12 @@
 
 <body>
     <nav class="navbar navbar-dark bg-dark text=white">
-        <h3><center>PCOS DETECTION</center></h3>
-       
     </nav>
     <div class="container p-3 my-3 bg-secondary text-white">
-        <form class="form-group">
+        <!-- line added to connect with server action-->
+        <form class="form-group" method="POST" action="/">
+
+
             <label for="pclass"> pasanger Class:</label>
             <input list="Passanger" name="pclass" class="form-control">
             <datalist id="Passanger" class="dropdown-menu">
@@ -51,10 +52,10 @@
             <div class="card-body">
 
                 <h5 class="card-title"> 
-                    Pcos Rms
+                    Polycystic ovary syndrome 
 
                 </h5>
-                <p class="card-text">
+                <p class="card-text" >
                     A hormonal disorder causing enlarged ovaries with small cysts on the outer edges.
 The cause of polycystic ovary syndrome isn't well understood, but may involve a combination of genetic and environmental factors.
 Symptoms include menstrual irregularity, excess hair growth, acne and obesity.
