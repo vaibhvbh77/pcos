@@ -1,0 +1,1 @@
+Women with PCOS are likely to develop serious health problems. These include type-2 diabetes, high blood pressure, heart congestion and uterine cancer. Women with PCOS often have problems with their ability to get pregnant (infertility).
